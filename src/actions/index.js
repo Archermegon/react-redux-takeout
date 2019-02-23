@@ -2,12 +2,16 @@ import axios from "axios";
 import * as actionTypes from "./../constants/actionTypes";
 
 export const getGoods = () => dispatch => {
-  axios.get("http://localhost:2019/goods").then(res => {
-    dispatch({
-      type: actionTypes.GET_FOODS,
-      goods: res.data
+  axios
+    .get(
+      "https://raw.githubusercontent.com/Archermegon/react-redux-takeout/master/API/post.json"
+    )
+    .then(res => {
+      dispatch({
+        type: actionTypes.GET_FOODS,
+        goods: res.data.goods
+      });
     });
-  });
 };
 
 export const addCart = id => dispatch => {
